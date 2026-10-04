@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Crew Hands</title>
+<meta name="description" content="Crew Hands records real jobsite and trade service footage across Latin America to train physical AI. Egocentric video, depth, motion and audio, labeled to your spec.">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta property="og:title" content="Crew Hands">
+<meta property="og:description" content="We build & capture. Real World Data for Physical AI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://crewhandsdata.com/">
+<meta property="og:image" content="https://crewhandsdata.com/favicon.png">
+<link rel="canonical" href="https://crewhandsdata.com/">
+<style>
+/* Layout: a quiet, dark page. One full-height photo hero with a single light headline, then calm sections that keep the vocabulary of a drawing set (sheet numbers, schedules, a title block) in small type. */
+:root{
+  --concrete:#E2E3DF; --concrete-2:#FFFFFF; --chalk:#F3F3F0;
+  --ink:#121416; --ink-2:#4A4F54;
+  --dark:#121416; --on-dark:#F1F1EE; --on-dark-2:#B4B8B5;
+  --steel:#2C4A66; --caution:#FFC400; --on-caution:#121416;
+  --line:color-mix(in srgb,var(--ink) 16%,transparent);
+  --rule:color-mix(in srgb,var(--ink) 55%,transparent);
+  --display:"Outfit","Avenir Next","Century Gothic","Helvetica Neue",Arial,sans-serif;
+  --body:"Outfit","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --d-weight:400; --d-case:none; --d-lh:1.1; --d-stretch:100%; --d-track:-.015em;
+  --h1:clamp(2.7rem,6.4vw,5.8rem); --h2:clamp(2rem,4vw,3.3rem); --d-scale:.84;
+  --wrap:1200px; --gutter:clamp(16px,4vw,40px); --r:10px;
+  --g1:rgba(18,20,22,.80); --g2:rgba(18,20,22,.58); --g3:rgba(18,20,22,.66); --err:#B3261E;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--concrete);color:var(--ink);font-family:var(--body);font-size:17px;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:var(--steel)}
+:focus-visible{outline:3px solid var(--caution);outline-offset:2px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);text-transform:var(--d-case);line-height:var(--d-lh);letter-spacing:var(--d-track);margin:0;text-wrap:balance}
+h2{font-size:var(--h2)}
+h3{font-size:calc(1.6rem * var(--d-scale))}
+p{margin:0}
+.lede{font-size:1.15rem;max-width:62ch;color:var(--ink-2)}
+
+/* ---------- top bar ---------- */
+.bar{position:absolute;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;color:var(--on-dark)}
+.bar .wrap{max-width:none;display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:16px;padding-block:20px}
+.brand{grid-column:2;color:var(--on-dark);text-decoration:none;font-family:var(--display);font-weight:600;font-size:1.45rem;letter-spacing:-.02em;line-height:1.6;white-space:nowrap}
+.nav{grid-column:1;grid-row:1;display:grid;gap:6px;justify-items:start}
+.nav a{color:var(--on-dark);text-decoration:none;font-size:1rem;font-weight:300;opacity:.85}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.cta{grid-column:3;justify-self:end;display:inline-flex;align-items:center;gap:12px;background:var(--caution);color:var(--on-caution);text-decoration:none;font-weight:500;font-size:.98rem;padding:5px 5px 5px 16px;border-radius:8px;white-space:nowrap}
+.cta i{display:grid;place-items:center;width:32px;height:32px;border-radius:6px;background:var(--dark);color:var(--on-dark);font-style:normal}
+@media (max-width:760px){.nav{display:none}.bar .wrap{grid-template-columns:1fr auto}.brand{grid-column:1}.cta{grid-column:2}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--dark);color:var(--on-dark);overflow:hidden;isolation:isolate}
+.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+  linear-gradient(180deg,var(--g1) 0%,var(--g2) 42%,var(--g3) 68%,var(--dark) 100%)}
+.hero .wrap{min-height:clamp(600px,94vh,920px);display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:150px 0}
+.hero h1{font-size:var(--h1);font-weight:300;margin-top:auto;max-width:16ch}
+.hero p.sub{margin-top:18px;font-size:clamp(1.1rem,1.9vw,1.45rem);font-weight:300;color:var(--on-dark);opacity:.9;margin-bottom:auto}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .hero-actions{justify-content:center;margin-bottom:auto}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:8px;font-family:var(--body);font-size:1rem;font-weight:500;text-decoration:none;border:1px solid var(--rule);cursor:pointer;background:none;color:inherit}
+.btn.solid{background:var(--caution);border-color:var(--caution);color:var(--on-caution)}
+.btn:hover{opacity:.85}
+.titleblock{margin-top:56px;width:100%;text-align:left;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid color-mix(in srgb,var(--on-dark) 35%,transparent)}
+.titleblock>div{padding:16px 18px 20px 0;border-right:1px solid color-mix(in srgb,var(--on-dark) 20%,transparent)}
+.titleblock>div+div{padding-left:18px}
+.titleblock>div:last-child{border-right:0}
+.titleblock .mono{color:var(--caution);font-size:.62rem}
+.titleblock strong{display:block;font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:calc(1.3rem * var(--d-scale));text-transform:var(--d-case);line-height:1.2;margin-top:6px}
+@media (max-width:760px){.titleblock{grid-template-columns:1fr 1fr}.titleblock>div:nth-child(2){border-right:0}.titleblock>div:nth-child(3){padding-left:0}.titleblock>div:nth-child(n+3){border-top:1px solid color-mix(in srgb,var(--on-dark) 20%,transparent)}}
+.tape{height:18px;background:repeating-linear-gradient(-45deg,var(--caution) 0 22px,var(--dark) 22px 44px)}
+
+/* ---------- sheets ---------- */
+.sheet{padding-block:clamp(64px,9vw,120px)}
+.sheet-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:end;margin-bottom:clamp(36px,5vw,60px)}
+.sheet-no{font-family:var(--mono);font-weight:600;font-size:.8rem;border:2px solid var(--rule);padding:10px 12px;line-height:1.2;text-align:center;min-width:92px}
+.sheet-no small{display:block;font-size:.56rem;letter-spacing:.1em;opacity:.7;border-bottom:1px solid var(--rule);padding-bottom:6px;margin-bottom:6px}
+.sheet-head .lede{margin-top:16px}
+@media (max-width:640px){.sheet-head{grid-template-columns:1fr}.sheet-no{justify-self:start}}
+.sheet.dark{background:var(--dark);color:var(--on-dark)}
+.sheet.dark .sheet-no{border-color:var(--on-dark)}
+.sheet.dark .sheet-no small{border-color:var(--on-dark)}
+.sheet.dark .lede{color:var(--on-dark-2)}
+.sheet.paper{background:var(--chalk)}
+
+/* ---------- scope schedule ---------- */
+.division+.division{margin-top:56px}
+.div-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:3px solid var(--rule);padding-bottom:12px}
+.div-head .code{font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:calc(3.4rem * var(--d-scale));line-height:.8;color:var(--steel)}
+.div-head h3{font-size:calc(2rem * var(--d-scale))}
+.div-head .mono{margin-left:auto;color:var(--ink-2)}
+.cols{display:grid;grid-template-columns:90px minmax(0,1.4fr) minmax(0,1fr) 40px;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.task{border-bottom:1px solid var(--line)}
+.task summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:90px minmax(0,1.4fr) minmax(0,1fr) 40px;gap:16px;align-items:center;padding:18px 0}
+.task summary::-webkit-details-marker{display:none}
+.task summary:hover{background:linear-gradient(90deg,color-mix(in srgb,var(--caution) 30%,transparent),transparent 70%)}
+.task .tc{font-family:var(--mono);font-size:.78rem;font-weight:600}
+.task .tn{font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:calc(1.55rem * var(--d-scale));text-transform:var(--d-case);line-height:1.05}
+.task .tt{font-size:.92rem;color:var(--ink-2)}
+.task .tog{width:32px;height:32px;border:2px solid var(--rule);display:grid;place-items:center;font-family:var(--mono);font-weight:600;transition:transform .2s}
+.task[open] .tog{transform:rotate(45deg);background:var(--caution);color:var(--on-caution)}
+.task-body{display:grid;grid-template-columns:90px repeat(3,minmax(0,1fr));gap:16px;padding:0 0 26px}
+.task-body>div:first-child{grid-column:1}
+.task-body h4{margin:0 0 6px;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--steel)}
+.task-body p{font-size:.95rem}
+@media (max-width:820px){
+  .cols{display:none}
+  .task summary{grid-template-columns:64px minmax(0,1fr) 34px}
+  .task .tt{display:none}
+  .task-body{grid-template-columns:1fr;padding-left:0}
+  .task-body>div:first-child{display:none}
+}
+
+/* ---------- field conditions ---------- */
+.conditions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:28px;border-top:1px solid color-mix(in srgb,var(--on-dark) 25%,transparent)}
+.cond{padding:28px 24px 32px 0;border-bottom:1px solid color-mix(in srgb,var(--on-dark) 25%,transparent);display:grid;grid-template-columns:34px 1fr;gap:14px}
+.cond .box{width:24px;height:24px;border:2px solid var(--caution);border-radius:4px;margin-top:4px;position:relative}
+.cond .box::after{content:"";position:absolute;left:6px;top:1px;width:7px;height:13px;border:solid var(--caution);border-width:0 3px 3px 0;transform:rotate(45deg)}
+@media (max-width:900px){.conditions{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.conditions{grid-template-columns:1fr}}
+.cond h3{font-size:calc(1.55rem * var(--d-scale));color:var(--on-dark)}
+.cond p{margin-top:8px;color:var(--on-dark-2);font-size:.96rem}
+
+/* ---------- capture kit (bill of materials) ---------- */
+.bom-wrap{border-radius:var(--r);overflow-x:auto;border:2px solid var(--rule);background:var(--chalk)}
+table.bom{width:100%;border-collapse:collapse;min-width:720px}
+.bom th{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:14px 16px;background:var(--dark);color:var(--on-dark);font-weight:500}
+.bom td{padding:18px 16px;border-top:1px solid var(--line);vertical-align:top;font-size:.95rem}
+.bom td:first-child{font-family:var(--mono);font-weight:600;font-size:.78rem;width:70px}
+.bom td.item{font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:calc(1.35rem * var(--d-scale));text-transform:var(--d-case);line-height:1.05;width:22%}
+.tag{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border:1.5px solid var(--rule)}
+.tag.std{background:var(--caution);border-color:var(--caution);color:var(--on-caution)}
+.note{margin-top:14px;color:var(--ink-2);font-size:.86rem}
+
+/* ---------- schedule (gantt) ---------- */
+.gantt{border-radius:var(--r);border:2px solid var(--rule);background:var(--chalk);overflow-x:auto}
+.g-inner{min-width:760px}
+.g-row{display:grid;grid-template-columns:minmax(220px,1.1fr) 3fr;border-top:1px solid var(--line)}
+.g-row:first-child{border-top:0}
+.g-label{padding:16px;border-right:2px solid var(--rule)}
+.g-label b{display:block;font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:calc(1.25rem * var(--d-scale));text-transform:var(--d-case);line-height:1.05}
+.g-label span{font-size:.86rem;color:var(--ink-2)}
+.g-track{position:relative;display:grid;grid-template-columns:repeat(8,1fr);background-image:linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:12.5% 100%}
+.g-head .g-track{background:none}
+.g-head .g-track span{font-family:var(--mono);font-size:.62rem;padding:12px 8px;border-left:1px solid var(--line)}
+.g-head{background:var(--dark);color:var(--on-dark)}
+.g-head .g-label{border-right-color:var(--on-dark)}
+.g-head .g-track span{border-color:color-mix(in srgb,var(--on-dark) 25%,transparent)}
+.g-bar{align-self:center;height:26px;margin:18px 0;background:var(--steel);position:relative}
+.g-bar.c{background:var(--caution)}
+.g-bar.h{background:repeating-linear-gradient(-45deg,var(--steel) 0 8px,color-mix(in srgb,var(--steel) 78%,white) 8px 16px)}
+.g-bar i{position:absolute;right:-7px;top:50%;width:12px;height:12px;background:var(--ink);transform:translateY(-50%) rotate(45deg)}
+.legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px;font-size:.86rem;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend em{width:22px;height:10px;display:inline-block;background:var(--steel)}
+.legend em.c{background:var(--caution)}
+.legend em.d{width:10px;height:10px;background:var(--ink);transform:rotate(45deg)}
+
+/* ---------- submittal ---------- */
+.submittal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:900px){.submittal{grid-template-columns:1fr}}
+.layers{display:grid;gap:0;border-top:3px solid var(--on-dark)}
+.layer{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:20px 0;border-bottom:1px solid color-mix(in srgb,var(--on-dark) 22%,transparent)}
+.layer .mono{color:var(--caution);padding-top:5px}
+.layer h3{font-size:calc(1.4rem * var(--d-scale))}
+.layer p{color:var(--on-dark-2);font-size:.95rem;margin-top:6px}
+.manifest{border-radius:var(--r);background:color-mix(in srgb,var(--dark) 72%,black);border:1px solid color-mix(in srgb,var(--on-dark) 20%,transparent);overflow:auto}
+.manifest .mh{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid color-mix(in srgb,var(--on-dark) 20%,transparent);color:var(--on-dark-2)}
+.manifest{color:var(--on-dark)}
+.manifest pre{margin:0;padding:18px 16px;font-family:var(--mono);font-size:.74rem;line-height:1.75;color:var(--on-dark);white-space:pre}
+.manifest .k{color:var(--on-dark-2)}.manifest .s{color:var(--caution)}.manifest .n{color:var(--on-dark)}.manifest .c{color:var(--on-dark-2);opacity:.7}
+
+/* ---------- safety ---------- */
+.safety{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:1px;background:var(--rule);border-radius:var(--r);overflow:hidden;border:2px solid var(--rule)}
+.safe{background:var(--chalk);padding:26px 22px 30px;display:grid;gap:10px;align-content:start}
+.safe svg{width:44px;height:44px}
+svg [stroke="#121416"]{stroke:var(--ink)}svg [fill="#FFC400"]{fill:var(--caution)}svg [stroke="#FFC400"]{stroke:var(--caution)}
+.safe h3{font-size:calc(1.45rem * var(--d-scale))}
+.safe p{font-size:.95rem;color:var(--ink-2)}
+
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:900px){.about{grid-template-columns:1fr}}
+.about p+p{margin-top:16px}
+.about .copy p{max-width:60ch}
+.stamp{border:2px solid var(--steel);border-radius:var(--r);color:var(--steel);padding:26px;background:var(--chalk);max-width:440px}
+.stamp .mono{font-size:.66rem}
+.stamp strong{display:block;font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:clamp(2.2rem,4vw,3.2rem);line-height:.95;text-transform:var(--d-case);margin:12px 0}
+.stamp p{color:var(--ink-2);font-size:.95rem}
+.stamp a{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- RFIs ---------- */
+.rfis{border-top:3px solid var(--rule)}
+.rfi{border-bottom:1px solid var(--line)}
+.rfi summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:96px 1fr 32px;gap:16px;align-items:center;padding:20px 0}
+.rfi summary::-webkit-details-marker{display:none}
+.rfi .mono{color:var(--steel);font-weight:600}
+.rfi .q{font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:calc(1.45rem * var(--d-scale));text-transform:var(--d-case);line-height:1.08}
+.rfi .tog{width:30px;height:30px;border:2px solid var(--rule);display:grid;place-items:center;font-family:var(--mono);transition:transform .2s}
+.rfi[open] .tog{transform:rotate(45deg);background:var(--caution);color:var(--on-caution)}
+.rfi .a{padding:0 48px 24px 112px;max-width:calc(62ch + 112px);color:var(--ink-2)}
+@media (max-width:640px){.rfi summary{grid-template-columns:1fr 30px}.rfi summary .mono{grid-column:1/-1;margin-bottom:-10px}.rfi .a{padding:0 0 22px}}
+
+/* ---------- bid request ---------- */
+.bid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:900px){.bid{grid-template-columns:1fr}}
+.bid h2 em{font-style:normal;color:var(--caution)}
+.contact-line{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.contact-line code{font-family:var(--mono);font-size:.9rem;background:color-mix(in srgb,var(--on-dark) 8%,transparent);border:1px solid color-mix(in srgb,var(--on-dark) 30%,transparent);padding:10px 14px;user-select:all;color:var(--on-dark)}
+form{background:var(--chalk);color:var(--ink);border:3px solid var(--caution);border-radius:var(--r);padding:clamp(20px,3vw,32px);display:grid;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:560px){.row{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+input,select,textarea{font:inherit;font-family:var(--body);font-size:1rem;text-transform:none;letter-spacing:0;color:var(--ink);background:var(--concrete-2);border:1px solid var(--rule);border-radius:8px;padding:12px;width:100%;min-width:0}
+textarea{min-height:110px;resize:vertical}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
+legend{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:8px;padding:0}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--rule);padding:10px 12px;cursor:pointer;font-size:.66rem;color:var(--ink)}
+.checks input{width:auto;padding:0;accent-color:var(--ink)}
+.checks label:has(input:checked){background:var(--caution);color:var(--on-caution)}
+form .btn{justify-self:start;color:var(--ink)}
+.done{border:2px dashed var(--ink);padding:18px;background:var(--concrete-2);border-radius:8px;display:grid;gap:12px}
+.done pre{margin:0;white-space:pre-wrap;font-family:var(--mono);font-size:.74rem;line-height:1.6}
+.done .btns{display:flex;flex-wrap:wrap;gap:10px}
+
+/* ---------- footer title block ---------- */
+footer{background:var(--dark);color:var(--on-dark);padding-block:0 32px}
+.ftb{display:grid;grid-template-columns:1.4fr repeat(4,1fr);border:2px solid color-mix(in srgb,var(--on-dark) 40%,transparent);margin-top:40px}
+.ftb>div{padding:16px;border-right:1px solid color-mix(in srgb,var(--on-dark) 25%,transparent)}
+.ftb>div:last-child{border-right:0}
+.ftb .mono{font-size:.58rem;color:var(--caution)}
+.ftb strong{display:block;margin-top:6px;font-family:var(--display);font-weight:var(--d-weight);font-stretch:var(--d-stretch);font-size:calc(1.25rem * var(--d-scale));text-transform:var(--d-case);line-height:1.1}
+.ftb a{color:var(--on-dark)}
+@media (max-width:860px){.ftb{grid-template-columns:1fr 1fr}.ftb>div:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid color-mix(in srgb,var(--on-dark) 25%,transparent)}.ftb>div:nth-child(3){border-right:0}.ftb>div:nth-child(n+4){border-top:1px solid color-mix(in srgb,var(--on-dark) 25%,transparent)}}
+.fine{margin-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--on-dark-2)}
+.hero h1 em{font-style:normal;color:var(--caution)}
+.hero h1::after{content:"";display:block;width:92px;height:8px;margin:26px auto 0;background:repeating-linear-gradient(-45deg,var(--caution) 0 10px,var(--dark) 10px 20px)}
+.sheet-no{background:var(--caution);color:var(--on-caution);border-color:var(--on-caution)!important;border-radius:4px}
+.sheet-no small{border-color:var(--on-caution)!important}
+.sheet h2{font-weight:500}
+.bar{border-top:6px solid var(--caution)}
+.sheet.dark+.sheet,.sheet+.sheet.dark{border-top:0}
+.sheet.photo{background:linear-gradient(color-mix(in srgb,var(--dark) 72%,transparent),color-mix(in srgb,var(--dark) 84%,transparent)),var(--ph) center/cover no-repeat var(--dark)}
+.band{background:url(ph-yellow.jpg) center 70%/cover no-repeat var(--caution);border-block:6px solid var(--dark)}
+.band .wrap{min-height:clamp(120px,15vw,190px);display:flex;align-items:center}
+.band-logo{display:inline-flex;align-items:center;gap:14px;font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,3.4vw,2.6rem);letter-spacing:-.02em;color:var(--on-caution)}
+.band-logo svg{width:1.5em;height:1.5em;flex:none}
+.sheet.photo .lede,.sheet.photo .cond p,.sheet.photo .layer p{color:var(--on-dark)}
+.about{align-items:stretch}
+.aside{position:relative;min-width:0;display:grid}
+.aside .ph{width:100%;height:100%;min-height:340px;object-fit:cover;border-radius:var(--r)}
+.aside .stamp{background:color-mix(in srgb,var(--chalk) 72%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);position:absolute;left:16px;right:16px;bottom:16px;max-width:360px;padding:18px 20px;transform:none}
+.aside .stamp strong{font-size:1.45rem;line-height:1.1;margin:8px 0}
+.ctas{grid-column:3;justify-self:end;display:grid;gap:8px;justify-items:end}
+.ctas .cta{grid-column:auto;justify-self:end}
+.cta2{color:var(--on-dark);text-decoration:none;font-weight:500;font-size:.98rem;padding:8px 16px;border-radius:8px;border:1px solid color-mix(in srgb,var(--on-dark) 65%,transparent);background:color-mix(in srgb,var(--dark) 35%,transparent);white-space:nowrap}
+.cta2:hover{background:color-mix(in srgb,var(--dark) 60%,transparent)}
+@media (max-width:760px){.ctas{grid-column:2}}
+.call{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:900px){.call{grid-template-columns:1fr}}
+.call-copy{display:grid;gap:20px;min-width:0}
+.call-facts{margin:8px 0 0;display:grid;gap:0;border-top:3px solid var(--ink)}
+.call-facts>div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.call-facts dt{color:var(--steel)}
+.call-facts dd{margin:0;font-weight:400}
+.call-card{background:#fff;border:3px solid var(--caution);border-radius:var(--r);overflow:hidden;min-width:0}
+.call-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 16px;background:var(--dark);color:var(--on-dark)}
+.call-head strong{font-weight:500;font-size:1.1rem}
+.call-head .btn{padding:9px 14px;font-size:.92rem}
+.call-card iframe{display:block;width:100%;height:600px;border:0;background:#fff}
+footer{overflow:hidden;padding-bottom:0}
+.giant{margin-top:clamp(36px,6vw,80px);margin-bottom:-.3em;font-family:var(--display);font-weight:600;font-size:17.6vw;line-height:1;letter-spacing:-.03em;white-space:nowrap;text-align:center;color:transparent;background:linear-gradient(180deg,color-mix(in srgb,var(--on-dark) 16%,transparent),color-mix(in srgb,var(--on-dark) 5%,transparent));-webkit-background-clip:text;background-clip:text;user-select:none}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <nav class="nav" aria-label="Sections">
+      <a href="#scope">Scope of work</a>
+      <a href="#kit">Capture kit</a>
+      <a href="#submittal">Deliverable</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="brand" href="#top" aria-label="Crew Hands home">Crew Hands</a>
+    <div class="ctas"><a class="cta" href="#bid">Request a bid <i aria-hidden="true">&rsaquo;</i></a><a class="cta2" href="#call">Book a call</a></div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Crew Hands">
+    <img class="poster" src="brick.jpg" alt="">
+    <div class="wrap">
+      <h1>We build <em>&amp;</em> capture</h1>
+      <p class="sub">Real World Data for Physical AI</p>
+      <div class="titleblock" role="list">
+        <div role="listitem"><span class="mono">Divisions</span><strong>03 Active site<br>06 Trade service</strong></div>
+        <div role="listitem"><span class="mono">Task types</span><strong>12 recorded tasks</strong></div>
+        <div role="listitem"><span class="mono">Viewpoint</span><strong>Egocentric, hands in frame</strong></div>
+        <div role="listitem"><span class="mono">Region</span><strong>Latin America</strong></div>
+      </div>
+    </div>
+  </section>
+  <div class="tape" aria-hidden="true"></div>
+
+  <!-- A-101 SCOPE -->
+  <section class="sheet paper" id="scope">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-101</div>
+        <div>
+          <h2>Scope of work</h2>
+          <p class="lede">Twelve tasks across two divisions, recorded on live jobsites and in occupied buildings. Open any line item to see what the camera captures and what a model can learn from it.</p>
+        </div>
+      </div>
+
+      <div class="division">
+        <div class="div-head"><span class="code">03</span><h3>Active construction site</h3><span class="mono">5 line items</span></div>
+        <div class="cols mono" aria-hidden="true"><span>Item</span><span>Task</span><span>Tools in frame</span><span></span></div>
+
+        <details class="task"><summary><span class="tc">03.01</span><span class="tn">Site cleanup &amp; debris removal</span><span class="tt">Broom, shovel, wheelbarrow, bins</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Sweeping, sorting scrap by material, loading bins and wheelbarrows, clearing walkways between active work zones.</p></div>
+            <div><h4>What a model learns</h4><p>Grasping irregular, unknown objects and moving through clutter that changes every hour.</p></div>
+            <div><h4>Site conditions</h4><p>Dust, uneven ground, mixed debris, other crews working nearby.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">03.02</span><span class="tn">General skilled trades</span><span class="tt">Tape, square, saw, drill driver, level</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Measuring, marking, cutting and fastening: framing, blocking, setting fixtures and checking for level and plumb.</p></div>
+            <div><h4>What a model learns</h4><p>Measure, mark, cut sequences and frequent tool switching within a single task.</p></div>
+            <div><h4>Site conditions</h4><p>Power tools, sawdust, work at bench and at height.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">03.03</span><span class="tn">Drywall hanging, taping &amp; mudding</span><span class="tt">Screw gun, taping knife, mud pan, sander</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Lifting and positioning sheets, driving screws, bedding tape, applying and feathering joint compound, sanding.</p></div>
+            <div><h4>What a model learns</h4><p>Handling large rigid panels, then spreading a deformable material to a smooth finish.</p></div>
+            <div><h4>Site conditions</h4><p>Fine dust, overhead work, bright and flat lighting that hides surface defects.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">03.04</span><span class="tn">Insulation installation</span><span class="tt">Utility knife, stapler, straightedge</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Measuring stud bays, cutting batts, fitting them around boxes and pipes, stapling vapor barrier.</p></div>
+            <div><h4>What a model learns</h4><p>Manipulating soft, compressible material and fitting it into tight cavities without gaps.</p></div>
+            <div><h4>Site conditions</h4><p>Gloved hands, low light inside open walls, fibrous material in frame.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">03.05</span><span class="tn">Painting &amp; priming</span><span class="tt">Roller, brush, tray, masking tape</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Masking trim, cutting in edges, rolling walls and ceilings, back rolling and touch ups.</p></div>
+            <div><h4>What a model learns</h4><p>Continuous coverage strokes, edge control and judging when a surface is fully coated.</p></div>
+            <div><h4>Site conditions</h4><p>Ladders, drop cloths, wet surfaces that change color as they dry.</p></div></div></details>
+      </div>
+
+      <div class="division">
+        <div class="div-head"><span class="code">06</span><h3>Trade service: plumbing, HVAC, electrical</h3><span class="mono">7 line items</span></div>
+        <div class="cols mono" aria-hidden="true"><span>Item</span><span>Task</span><span>Tools in frame</span><span></span></div>
+
+        <details class="task"><summary><span class="tc">06.01</span><span class="tn">Plumbing fixture installation</span><span class="tt">Basin wrench, adjustable wrench, thread tape</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Setting faucets, sinks and toilets, connecting supply lines and traps, checking for leaks.</p></div>
+            <div><h4>What a model learns</h4><p>Threading, alignment and torque control in cramped spaces under counters.</p></div>
+            <div><h4>Site conditions</h4><p>Working on the back, partial view of the hands, water in frame.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">06.02</span><span class="tn">HVAC equipment installation</span><span class="tt">Drill driver, snips, flare tool, gauges</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Mounting indoor and outdoor units, connecting ducts and line sets, securing brackets and hangers.</p></div>
+            <div><h4>What a model learns</h4><p>Aligning heavy components and coordinating two hands on one fastening task.</p></div>
+            <div><h4>Site conditions</h4><p>Rooftops, attics and walls, often with a second worker in frame.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">06.03</span><span class="tn">Drain snaking &amp; clearing</span><span class="tt">Hand auger, drum machine, bucket</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Opening access points, feeding and cranking the cable, retrieving it and testing the flow.</p></div>
+            <div><h4>What a model learns</h4><p>Cable manipulation where progress is felt more than seen, a strong case for paired force data.</p></div>
+            <div><h4>Site conditions</h4><p>Tight spaces, wet and dirty surfaces, little visual feedback.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">06.04</span><span class="tn">Water heater replacement</span><span class="tt">Pipe wrench, hose, dolly, multimeter</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Shutting off supply, draining, disconnecting, moving the old unit out and the new one in, reconnecting and testing.</p></div>
+            <div><h4>What a model learns</h4><p>A long horizon task with a strict order of steps, where skipping one has real consequences.</p></div>
+            <div><h4>Site conditions</h4><p>Basements and utility closets, heavy loads, gas or electric connections.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">06.05</span><span class="tn">Filter swap &amp; system tune-up</span><span class="tt">Screwdriver, coil cleaner, flashlight</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Opening service panels, replacing filters, inspecting and cleaning components, closing up.</p></div>
+            <div><h4>What a model learns</h4><p>Inspection routines, panel latches and knowing where to look before acting.</p></div>
+            <div><h4>Site conditions</h4><p>Varied equipment brands and layouts from one visit to the next.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">06.06</span><span class="tn">Thermostat &amp; control wiring</span><span class="tt">Precision screwdriver, wire stripper, tester</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Removing faceplates, identifying and labeling low voltage wires, terminating them and mounting the new control.</p></div>
+            <div><h4>What a model learns</h4><p>Fine manipulation of small parts and reading color coded conductors.</p></div>
+            <div><h4>Site conditions</h4><p>Occupied homes and offices, close range work at eye level.</p></div></div></details>
+
+        <details class="task"><summary><span class="tc">06.07</span><span class="tn">Outlet &amp; fixture wiring</span><span class="tt">Stripper, pliers, voltage tester, driver</span><span class="tog" aria-hidden="true">+</span></summary>
+          <div class="task-body"><div></div>
+            <div><h4>What we record</h4><p>Testing for power, stripping and bending conductors, terminating devices and mounting outlets and light fixtures.</p></div>
+            <div><h4>What a model learns</h4><p>Wire dexterity and the safety check that comes before every step.</p></div>
+            <div><h4>Site conditions</h4><p>Boxes in walls and ceilings, ladders, mixed lighting.</p></div></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- A-201 CONDITIONS -->
+  <section class="sheet dark photo" id="conditions" style="--ph:url(ph-mesh.jpg)">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-201</div>
+        <div>
+          <h2>Field conditions you can't stage</h2>
+          <p class="lede">A robot on a jobsite meets dust, gloves and a crew that moved the ladder. Lab footage doesn't show that. Ours is recorded where the work actually happens, so these conditions come built in.</p>
+        </div>
+      </div>
+      <div class="conditions">
+        <div class="cond"><span class="box" aria-hidden="true"></span><div><h3>Gloved hands</h3><p>Work gloves change how a grip looks and how fingers are tracked. Your model sees both.</p></div></div>
+        <div class="cond"><span class="box" aria-hidden="true"></span><div><h3>Dust &amp; debris</h3><p>Particles in the air, residue on surfaces and lenses, scrap underfoot.</p></div></div>
+        <div class="cond"><span class="box" aria-hidden="true"></span><div><h3>Tight spaces</h3><p>Under sinks, inside walls, behind units: partial views where only one hand fits.</p></div></div>
+        <div class="cond"><span class="box" aria-hidden="true"></span><div><h3>Changing light</h3><p>From open slabs in full sun to unlit rooms lit by a work lamp.</p></div></div>
+        <div class="cond"><span class="box" aria-hidden="true"></span><div><h3>Shared workspace</h3><p>Other trades crossing the frame, handing over tools, working on the same wall.</p></div></div>
+        <div class="cond"><span class="box" aria-hidden="true"></span><div><h3>Real tool wear</h3><p>Worn bits, bent blades and taped handles. The tools a robot will actually pick up.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A-250 CALL -->
+  <section class="sheet paper" id="call">
+    <div class="wrap call">
+      <div class="call-copy">
+        <div class="sheet-no" style="justify-self:start"><small>SHEET</small>A-250</div>
+        <h2>Walk us through your spec.</h2>
+        <p class="lede">Pick a time that works for you. Bring a spec or just an idea, and we'll help you define the tasks, sensors, hours and labels your model needs.</p>
+        <dl class="call-facts">
+          <div><dt class="mono">With</dt><dd>Mia Cavanagh</dd></div>
+          <div><dt class="mono">Length</dt><dd>30 minutes, on Google Meet</dd></div>
+          <div><dt class="mono">Email</dt><dd>mia@vintti.com</dd></div>
+          <div><dt class="mono">Based in</dt><dd>Buenos Aires, Argentina</dd></div>
+        </dl>
+      </div>
+      <div class="call-card">
+        <div class="call-head"><strong>Schedule your call</strong><a class="btn solid" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3x5LVmDakj2eyMyHAKQR4JoYWXaO_ZPu6LEGejVYUSPCswPdfxkcfdVv0Ya7gVUWUj4Ru-5Xlt" target="_blank" rel="noopener">Open booking page</a></div>
+        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3x5LVmDakj2eyMyHAKQR4JoYWXaO_ZPu6LEGejVYUSPCswPdfxkcfdVv0Ya7gVUWUj4Ru-5Xlt?gv=true" title="Book a 30 minute call with Crew Hands" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+  <div class="tape" aria-hidden="true"></div>
+
+  <!-- A-301 KIT -->
+  <section class="sheet" id="kit">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-301</div>
+        <div>
+          <h2>Capture kit</h2>
+          <p class="lede">The bill of materials for every session. Video is standard. The other signals are added per project, recorded in sync with the footage.</p>
+        </div>
+      </div>
+      <div class="bom-wrap">
+        <table class="bom">
+          <thead><tr><th>Mark</th><th>Item</th><th>What it records</th><th>Why it matters on a jobsite</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>K-1</td><td class="item">Head-mounted camera</td><td>First person video from the worker's eye line, hands and tool in frame.</td><td>It matches the viewpoint of a robot's own camera, which a fixed or third person angle can't do.</td><td><span class="tag std">Standard</span></td></tr>
+            <tr><td>K-2</td><td class="item">Depth</td><td>Distance to surfaces and objects, aligned to each video frame.</td><td>Studs, pipes and boxes sit at different depths inside the same wall.</td><td><span class="tag">Per project</span></td></tr>
+            <tr><td>K-3</td><td class="item">Motion &amp; pose (IMU)</td><td>Head, wrist and arm movement through every step of the task.</td><td>Separates a careful cut from a fast one when the video looks the same.</td><td><span class="tag">Per project</span></td></tr>
+            <tr><td>K-4</td><td class="item">Force &amp; tactile glove</td><td>Grip pressure and contact force at the fingertips and palm.</td><td>Torque on a fitting or resistance in a drain is felt before it is seen.</td><td><span class="tag">Per project</span></td></tr>
+            <tr><td>K-5</td><td class="item">Audio</td><td>Ambient and task sound: a drill seating a screw, a cable catching in a pipe.</td><td>Sound often signals that a step is complete.</td><td><span class="tag">Per project</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Resolution, frame rate and sensor configuration are set in the project spec.</p>
+    </div>
+  </section>
+
+  <!-- A-401 SCHEDULE -->
+  <section class="sheet paper" id="schedule">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-401</div>
+        <div>
+          <h2>Project schedule</h2>
+          <p class="lede">A typical pilot, from first call to first delivery. Capture and labeling overlap, so you start receiving data while recording is still underway.</p>
+        </div>
+      </div>
+      <div class="gantt" role="table" aria-label="Typical pilot schedule by week">
+        <div class="g-inner">
+          <div class="g-row g-head" role="row"><div class="g-label mono" role="columnheader">Phase</div><div class="g-track" role="columnheader"><span>WK 1</span><span>WK 2</span><span>WK 3</span><span>WK 4</span><span>WK 5</span><span>WK 6</span><span>WK 7</span><span>WK 8</span></div></div>
+          <div class="g-row" role="row"><div class="g-label" role="cell"><b>Spec &amp; site match</b><span>Tasks, hours, sensors, labeling schema</span></div><div class="g-track" role="cell"><div class="g-bar c" style="grid-column:1 / 2"><i></i></div></div></div>
+          <div class="g-row" role="row"><div class="g-label" role="cell"><b>Crew onboarding</b><span>Consent, kit setup, safety briefing</span></div><div class="g-track" role="cell"><div class="g-bar" style="grid-column:2 / 3"></div></div></div>
+          <div class="g-row" role="row"><div class="g-label" role="cell"><b>Capture + live QA</b><span>Recording on site, reviewed daily</span></div><div class="g-track" role="cell"><div class="g-bar h" style="grid-column:2 / 8"></div></div></div>
+          <div class="g-row" role="row"><div class="g-label" role="cell"><b>Labeling</b><span>Your schema, applied and checked</span></div><div class="g-track" role="cell"><div class="g-bar" style="grid-column:3 / 9"></div></div></div>
+          <div class="g-row" role="row"><div class="g-label" role="cell"><b>Rolling delivery</b><span>Batches as they pass QA</span></div><div class="g-track" role="cell"><div class="g-bar c" style="grid-column:4 / 9"><i></i></div></div></div>
+        </div>
+      </div>
+      <div class="legend"><span><em class="c"></em>Milestone phase</span><span><em></em>Work in progress</span><span><em class="d"></em>Handoff to you</span><span>Illustrative timeline. Each project is scheduled to its own volume.</span></div>
+    </div>
+  </section>
+
+  <!-- A-501 SUBMITTAL -->
+  <section class="sheet dark photo" id="submittal" style="--ph:url(ph-bricks.jpg)">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-501</div>
+        <div>
+          <h2>The submittal</h2>
+          <p class="lede">What lands in your bucket: clips with their signals, metadata and the label layers your pipeline expects. The manifest below is an illustrative example, not a client deliverable.</p>
+        </div>
+      </div>
+      <div class="submittal">
+        <div class="layers">
+          <div class="layer"><span class="mono">L-1</span><div><h3>Step segmentation</h3><p>Each clip split into named steps with start and end times: shut off, drain, disconnect, swap.</p></div></div>
+          <div class="layer"><span class="mono">L-2</span><div><h3>Hand pose</h3><p>Keypoints for both hands, tracked through gloves and partial occlusion.</p></div></div>
+          <div class="layer"><span class="mono">L-3</span><div><h3>Tools &amp; materials</h3><p>Boxes and tracks for every tool and part in use, with the moment of contact marked.</p></div></div>
+          <div class="layer"><span class="mono">L-4</span><div><h3>Scene structure</h3><p>Walls, studs, fixtures and openings labeled for spatial context.</p></div></div>
+        </div>
+        <div class="manifest" role="region" aria-label="Example clip manifest" tabindex="0">
+          <div class="mh mono"><span>clip_0614.json</span><span>Example</span></div>
+<pre><span class="c">// one clip, one task, every signal in sync</span>
+{
+  <span class="k">"clip_id"</span>: <span class="s">"CH-06.04-0614"</span>,
+  <span class="k">"division"</span>: <span class="s">"06 Trade service"</span>,
+  <span class="k">"task"</span>: <span class="s">"Water heater replacement"</span>,
+  <span class="k">"site_type"</span>: <span class="s">"residential, utility closet"</span>,
+  <span class="k">"country"</span>: <span class="s">"AR"</span>,
+  <span class="k">"duration_s"</span>: <span class="n">2742</span>,
+  <span class="k">"signals"</span>: [<span class="s">"video"</span>, <span class="s">"depth"</span>, <span class="s">"imu"</span>, <span class="s">"audio"</span>],
+  <span class="k">"ppe"</span>: [<span class="s">"gloves"</span>, <span class="s">"safety glasses"</span>],
+  <span class="k">"steps"</span>: [
+    { <span class="k">"name"</span>: <span class="s">"shut off supply"</span>, <span class="k">"t"</span>: [<span class="n">0</span>, <span class="n">96</span>] },
+    { <span class="k">"name"</span>: <span class="s">"drain tank"</span>, <span class="k">"t"</span>: [<span class="n">96</span>, <span class="n">812</span>] },
+    { <span class="k">"name"</span>: <span class="s">"disconnect lines"</span>, <span class="k">"t"</span>: [<span class="n">812</span>, <span class="n">1290</span>] }
+  ],
+  <span class="k">"labels"</span>: [<span class="s">"steps"</span>, <span class="s">"hand_pose"</span>, <span class="s">"tools"</span>],
+  <span class="k">"faces_blurred"</span>: <span class="n">true</span>,
+  <span class="k">"qa_status"</span>: <span class="s">"passed"</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A-601 SAFETY -->
+  <section class="sheet" id="safety">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-601</div>
+        <div>
+          <h2>Site safety &amp; consent</h2>
+          <p class="lede">Recording never comes before the work or the people doing it.</p>
+        </div>
+      </div>
+      <div class="safety">
+        <div class="safe"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 30a16 16 0 0 1 32 0" fill="none" stroke="#121416" stroke-width="3"/><rect x="3" y="30" width="38" height="5" fill="#FFC400" stroke="#121416" stroke-width="2"/><path d="M22 14v10" stroke="#121416" stroke-width="3"/></svg><h3>PPE on every session</h3><p>Contributors record in the protection the task requires. Safety comes first, the shot second.</p></div>
+        <div class="safe"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="8" y="5" width="28" height="34" fill="none" stroke="#121416" stroke-width="3"/><path d="M14 15h16M14 21h16M14 27h9" stroke="#121416" stroke-width="2.5"/><path d="M26 31l4 4 8-9" fill="none" stroke="#FFC400" stroke-width="3.5"/></svg><h3>Signed consent</h3><p>Every contributor signs before recording and is paid for the hours they deliver.</p></div>
+        <div class="safe"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="18" r="9" fill="none" stroke="#121416" stroke-width="3"/><path d="M8 38c3-8 25-8 28 0" fill="none" stroke="#121416" stroke-width="3"/><rect x="11" y="13" width="22" height="9" fill="#FFC400" opacity=".85"/></svg><h3>Privacy by default</h3><p>Faces and identifying details of bystanders are blurred before delivery.</p></div>
+        <div class="safe"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 38V18L22 6l16 12v20z" fill="none" stroke="#121416" stroke-width="3"/><rect x="17" y="24" width="10" height="14" fill="#FFC400" stroke="#121416" stroke-width="2"/></svg><h3>Site authorization</h3><p>We record only where the site owner or contractor has approved it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band"><div class="wrap"><span class="band-logo"><svg viewBox="0 0 100 100" aria-hidden="true"><rect x="8" y="8" width="84" height="84" rx="14" fill="#121416"/><g fill="#FFC400"><rect x="22" y="44" width="10" height="34" rx="5"/><rect x="36" y="28" width="10" height="50" rx="5"/><rect x="50" y="22" width="10" height="56" rx="5"/><rect x="64" y="30" width="10" height="48" rx="5"/><rect x="22" y="70" width="52" height="10" rx="5"/></g></svg>Crew Hands</span></div></div>
+  <!-- A-701 ABOUT -->
+  <section class="sheet paper" id="about">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-701</div>
+        <div><h2>Who's on site</h2></div>
+      </div>
+      <div class="about">
+        <div class="copy">
+          <p class="lede">Crew Hands is a product of Vintti, a staffing company that has connected Latin American talent with companies in the US and Canada since 2022.</p>
+          <p>Recruiting is what we know. We find skilled people, check their work and keep them engaged over months, not days. Crew Hands applies that to physical AI: we work with tradespeople across the region and the sites they already work on, and turn their everyday jobs into training data.</p>
+          <p>Latin America builds with a wide mix of methods, from poured concrete and block to steel stud and drywall, often on the same street. A model that has seen that range is better prepared for any site it lands on.</p>
+        </div>
+        <div class="aside"><img class="ph" src="ph-gloves.jpg" alt="Gloved hands holding a handful of wood screws" loading="lazy"><div class="stamp">
+          <span class="mono">Approved for construction</span>
+          <strong>Built by recruiters, recorded by tradespeople.</strong>
+          <p>A product by Vintti.</p>
+          <a href="https://vintti.com" target="_blank" rel="noopener">Visit vintti.com</a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A-801 RFIs -->
+  <section class="sheet" id="rfi">
+    <div class="wrap">
+      <div class="sheet-head">
+        <div class="sheet-no"><small>SHEET</small>A-801</div>
+        <div>
+          <h2>Requests for information</h2>
+          <p class="lede">The questions we usually get before a first call.</p>
+        </div>
+      </div>
+      <div class="rfis">
+        <details class="rfi"><summary><span class="mono">RFI-001</span><span class="q">Who records the footage?</span><span class="tog" aria-hidden="true">+</span></summary><p class="a">Working tradespeople: cleanup crews, drywallers, painters, plumbers, HVAC technicians and electricians. They record the jobs they already do, with our kit, after training and signing consent.</p></details>
+        <details class="rfi"><summary><span class="mono">RFI-002</span><span class="q">Can you record a task that isn't on the list?</span><span class="tog" aria-hidden="true">+</span></summary><p class="a">Yes. The twelve tasks are where we are recording today. If your model needs another trade or a specific procedure, send the spec and we'll tell you how quickly we can staff it.</p></details>
+        <details class="rfi"><summary><span class="mono">RFI-003</span><span class="q">How do you check quality?</span><span class="tog" aria-hidden="true">+</span></summary><p class="a">Every session is reviewed against the spec: framing, hands in view, task completed, signals in sync. Clips that fail are re-recorded, not delivered.</p></details>
+        <details class="rfi"><summary><span class="mono">RFI-004</span><span class="q">Can we start small?</span><span class="tog" aria-hidden="true">+</span></summary><p class="a">Most clients start with a pilot on one or two tasks. It lets you test the data in your pipeline before committing to volume.</p></details>
+        <details class="rfi"><summary><span class="mono">RFI-005</span><span class="q">Who owns the data?</span><span class="tog" aria-hidden="true">+</span></summary><p class="a">Rights and exclusivity are defined in each contract. Data collected for a project can be delivered for your exclusive use.</p></details>
+        <details class="rfi"><summary><span class="mono">RFI-006</span><span class="q">Which labels can you deliver?</span><span class="tog" aria-hidden="true">+</span></summary><p class="a">Step segmentation, hand pose, tool and object tracking and scene structure are the most common. We follow your schema and output format.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true"></div>
+  <!-- BID -->
+  <section class="sheet dark photo" id="bid" style="--ph:url(ph-concrete.jpg)">
+    <div class="wrap bid">
+      <div>
+        <div class="sheet-no" style="display:inline-block;margin-bottom:28px"><small>SHEET</small>A-901</div>
+        <h2>Send us your spec. <em>We'll send a bid.</em></h2>
+        <p class="lede" style="margin-top:20px">Tell us the tasks, the hours and the signals you need. We reply with scope, timeline and pricing for a pilot.</p>
+        <div class="contact-line"><code id="email">mia@vintti.com</code><button class="btn" type="button" id="copyEmail">Copy email</button></div>
+      </div>
+      <form id="bidForm" novalidate>
+        <div class="row">
+          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-company">Company<input id="f-company" name="company" autocomplete="organization" required></label>
+        </div>
+        <label for="f-email">Work email<input id="f-email" name="email" type="email" autocomplete="email" required></label>
+        <fieldset>
+          <legend>Divisions</legend>
+          <div class="checks">
+            <label for="f-d03"><input id="f-d03" type="checkbox" name="div" value="03 Active construction site" checked>03 Active site</label>
+            <label for="f-d06"><input id="f-d06" type="checkbox" name="div" value="06 Trade service">06 Trade service</label>
+            <label for="f-dx"><input id="f-dx" type="checkbox" name="div" value="Other tasks">Other</label>
+          </div>
+        </fieldset>
+        <div class="row">
+          <label for="f-hours">Hours needed<select id="f-hours" name="hours"><option>Pilot, under 100 h</option><option>100 to 1,000 h</option><option>1,000 to 10,000 h</option><option>More than 10,000 h</option></select></label>
+          <label for="f-labels">Labels<select id="f-labels" name="labels"><option>Raw footage only</option><option>Steps + hand pose</option><option>Full label stack</option><option>Our own schema</option></select></label>
+        </div>
+        <label for="f-notes">Notes<textarea id="f-notes" name="notes" placeholder="Sensors, site types, deadlines..."></textarea></label>
+        <p id="formError" class="mono" style="color:var(--err)" hidden>Add your name, company and a valid work email.</p>
+        <button class="btn solid" type="submit">Prepare bid request</button>
+        <div class="done" id="done" hidden>
+          <strong class="mono">Your request is ready to send</strong>
+          <pre id="summary"></pre>
+          <div class="btns"><a class="btn solid" id="mailBtn" href="#">Open in email</a><button class="btn" type="button" id="copySummary">Copy request</button></div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="tape" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="ftb">
+      <div><span class="mono">Project</span><strong>Crew Hands: jobsite data for physical AI</strong></div>
+      <div><span class="mono">Divisions</span><strong>03 · 06</strong></div>
+      <div><span class="mono">Region</span><strong>Latin America</strong></div>
+      <div><span class="mono">Contact</span><strong><a href="mailto:mia@vintti.com">mia@vintti.com</a></strong></div>
+      <div><span class="mono">A product by</span><strong><a href="https://vintti.com" target="_blank" rel="noopener">Vintti</a></strong></div>
+    </div>
+    <div class="fine mono"><span>© 2026 Vintti LLC</span><span>Rev. 01</span></div>
+  </div>
+  <div class="giant" aria-hidden="true">Crew Hands</div>
+</footer>
+
+<script>
+(function(){
+  function copy(text, btn){
+    var done=function(){var o=btn.textContent;btn.textContent='Copied';setTimeout(function(){btn.textContent=o},1600)};
+    try{navigator.clipboard.writeText(text).then(done,function(){sel()})}catch(e){sel()}
+    function sel(){var r=document.createRange();var n=document.getElementById(btn.id==='copyEmail'?'email':'summary');r.selectNodeContents(n);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+  }
+  document.getElementById('copyEmail').addEventListener('click',function(){copy('mia@vintti.com',this)});
+  var form=document.getElementById('bidForm');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=form.elements, err=document.getElementById('formError');
+    var ok=f.name.value.trim()&&f.company.value.trim()&&/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim());
+    err.hidden=!!ok; if(!ok) return;
+    var divs=[].slice.call(form.querySelectorAll('input[name=div]:checked')).map(function(i){return i.value}).join(', ')||'Not specified';
+    var body='Name: '+f.name.value.trim()+'\nCompany: '+f.company.value.trim()+'\nEmail: '+f.email.value.trim()+'\nDivisions: '+divs+'\nHours needed: '+f.hours.value+'\nLabels: '+f.labels.value+'\nNotes: '+(f.notes.value.trim()||'None');
+    document.getElementById('summary').textContent=body;
+    document.getElementById('mailBtn').href='mailto:mia@vintti.com?subject='+encodeURIComponent('Crew Hands bid request: '+f.company.value.trim())+'&body='+encodeURIComponent(body);
+    document.getElementById('done').hidden=false;
+  });
+  document.getElementById('copySummary').addEventListener('click',function(){copy(document.getElementById('summary').textContent,this)});
+})();
+</script>
+</body>
+</html>
